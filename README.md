@@ -12,7 +12,7 @@ A full-stack web app where students search and borrow books, and admins manage t
 ![Login](screenshots/login.png)
 
 ### Catalog (student view)
-![Catalog](screenshots/catalog.png)
+![Catalog](screenshots/Catalog.png)
 
 ### My books
 ![My books](screenshots/my-books.png)
