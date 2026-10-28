@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Campus Library</h1>
+  <div id="who" hidden><span id="whoName"></span> <button id="logout" class="ghost">Log out</button></div>
+</header>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<main id="authView">
+  <section class="panel narrow">
+    <div class="tabs"><button id="tabLogin" class="tab on">Log in</button><button id="tabReg" class="tab">Create account</button></div>
+    <form id="authForm">
+      <label id="nameRow" hidden>Name<input id="name" autocomplete="name"></label>
+      <label>Email<input id="email" type="email" required autocomplete="email"></label>
+      <label>Password<input id="password" type="password" minlength="6" required autocomplete="current-password"></label>
+      <button class="primary" id="authBtn">Log in</button>
+    </form>
+    <p class="hint">Demo: student@library.com / student123 &nbsp;|&nbsp; admin@library.com / admin123</p>
+  </section>
+</main>
+
+<main id="appView" hidden>
+  <nav class="tabs main">
+    <button class="tab on" data-view="catalog">Catalog</button>
+    <button class="tab" data-view="mine">My books</button>
+    <button class="tab admin" data-view="admin" hidden>Admin</button>
+  </nav>
+
+  <section id="catalog" class="view">
+    <div class="filters">
+      <input id="q" list="suggestions" placeholder="Search title, author or ISBN" autocomplete="off">
+      <datalist id="suggestions"></datalist>
+      <select id="category"><option value="">All categories</option></select>
+      <label class="check"><input type="checkbox" id="avail"> Available only</label>
+    </div>
+    <div id="books" class="grid"></div>
+    <div class="pager"><button id="prev" class="ghost">Previous</button><span id="pageInfo"></span><button id="next" class="ghost">Next</button></div>
+    <h2>Recently viewed</h2>
+    <div id="recent" class="chips"></div>
+  </section>
+
+  <section id="mine" class="view" hidden>
+    <h2>Your books</h2>
+    <div id="myIssues"></div>
+  </section>
+
+  <section id="admin" class="view" hidden>
+    <div id="stats" class="stats"></div>
+    <div class="two">
+      <div class="panel">
+        <h2 id="formTitle">Add a book</h2>
+        <form id="bookForm">
+          <input type="hidden" id="bookId">
+          <label>Title<input id="bTitle" required></label>
+          <label>Author<input id="bAuthor" required></label>
+          <label>ISBN<input id="bIsbn" required></label>
+          <label>Category<input id="bCategory" required></label>
+          <label>Copies<input id="bCopies" type="number" min="1" value="1" required></label>
+          <div class="row"><button class="primary" id="bookSave">Add book</button><button type="button" id="bookCancel" class="ghost" hidden>Cancel edit</button></div>
+        </form>
+      </div>
+      <div class="panel">
+        <h2>Overdue books</h2>
+        <div id="overdue"></div>
+        <h2>Most issued</h2>
+        <div id="topBooks"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
